@@ -19,7 +19,7 @@ public class UdtReceiveThread extends Thread {
     private UDTSocket mSocket;
     private byte[] buffer;
     private InputStream mInputStream;
-    private final static int DEFAULT_DATA_SIZE = 102400 * 5;
+    private final static int DEFAULT_DATA_SIZE = 102400;
     private IReceviceListener mListener;
     private boolean isRunning = false;
 
