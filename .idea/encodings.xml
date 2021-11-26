@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/client-judt/src/main/java/net/File/SendFiles.java" charset="GB2312" />
+    <file url="file://$PROJECT_DIR$/client-judt/src/main/java/udt/UDTSender.java" charset="GB2312" />
+    <file url="file://$PROJECT_DIR$/client-judt/src/main/java/udt/packets/ConnectionHandshake.java" charset="GB2312" />
+    <file url="file://$PROJECT_DIR$/client-judt/src/main/java/udt/util/Tools.java" charset="GB2312" />
+    <file url="file://$PROJECT_DIR$/server-judt/src/main/java/Test/TestServer.java" charset="GB2312" />
+    <file url="file://$PROJECT_DIR$/server-judt/src/main/java/judp/judpClient.java" charset="GB2312" />
+    <file url="file://$PROJECT_DIR$/server-judt/src/main/java/judp/judpServer.java" charset="GB2312" />
+    <file url="file://$PROJECT_DIR$/server-judt/src/main/java/net/File/SendFiles.java" charset="GB2312" />
+  </component>
+</project>

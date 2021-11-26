@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="14dp">
+
+    <TextView
+        android:id="@+id/tvConStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="连接状态: "
+        android:textSize="18dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="未连接"
+        android:textColor="#FF0000"
+        android:textSize="16dp"
+        app:layout_constraintLeft_toRightOf="@id/tvConStatus"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnQr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="扫描二维码"
+        app:layout_constraintTop_toBottomOf="@id/tvConStatus"/>
+
+    <LinearLayout
+        android:id="@+id/llIp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/btnQr">
+
+        <TextView
+            android:id="@+id/tvIPAd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="服务端IP地址: "
+            android:textSize="18dp" />
+
+        <EditText
+            android:id="@+id/etDevIP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llPort"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/llIp">
+
+        <TextView
+            android:id="@+id/tvPort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="服务端端口号: "
+            android:textSize="18dp" />
+
+        <EditText
+            android:id="@+id/etPort"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:digits="0123456789"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llOpt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/llPort">
+
+        <Button
+            android:id="@+id/btnCon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="7dp"
+            android:layout_weight="1"
+            android:text="@string/con_tcp" />
+
+        <Button
+            android:id="@+id/btnUdpCon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginLeft="7dp"
+            android:layout_weight="1"
+            android:text="@string/con_udp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnStartMirror"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="开始镜像"
+        app:layout_constraintTop_toBottomOf="@id/llOpt" />
+
+    <Button
+        android:id="@+id/btnStopMirror"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="停止镜像"
+        app:layout_constraintTop_toBottomOf="@id/btnStartMirror" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

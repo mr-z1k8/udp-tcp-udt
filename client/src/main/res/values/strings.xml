@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">SDKDemo</string>
+    <string name="con_tcp">连接设备</string>
+    <string name="con_udp">UDP连接</string>
+    <string name="disconnect">断开连接</string>
+    <string name="pushcast">推送</string>
+    <string name="mirrorcast">镜像</string>
+    <string name="connect_error">请断开已有的连接</string>
+    <string name="h264_mirror">H264码流-镜像</string>
+    <string name="h265_mirror">H265码流-镜像</string>
+
+</resources>

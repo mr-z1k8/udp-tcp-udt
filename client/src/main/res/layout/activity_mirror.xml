@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="14dp">
+
+
+    <TextView
+        android:id="@+id/tvProj"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="录制视频"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/llRecrod"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/tvProj">
+
+        <Button
+            android:id="@+id/btnStartRecord"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="7dp"
+            android:layout_weight="1"
+            android:text="录音" />
+
+        <Button
+            android:id="@+id/btnStopRecord"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:layout_weight="1"
+            android:text="停止" />
+
+        <Button
+            android:id="@+id/btnPlay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:layout_weight="1"
+            android:text="播放" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llProjOpt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/llRecrod">
+
+        <Button
+            android:id="@+id/btnStartProj"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="7dp"
+            android:layout_weight="1"
+            android:text="录屏" />
+
+        <Button
+            android:id="@+id/btnStopProj"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:layout_weight="1"
+            android:text="停止" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvH264"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/h264_mirror"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/llProjOpt" />
+
+    <Button
+        android:id="@+id/btnStartMirror"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="开始镜像"
+        app:layout_constraintTop_toBottomOf="@id/tvH264" />
+
+    <Button
+        android:id="@+id/btnStopMirror"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="停止镜像"
+        app:layout_constraintTop_toBottomOf="@id/btnStartMirror" />
+
+
+    <TextView
+        android:id="@+id/tvH265"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/h265_mirror"
+        android:textColor="@color/black"
+        android:visibility="gone"
+        android:textSize="18dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnStopMirror" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
