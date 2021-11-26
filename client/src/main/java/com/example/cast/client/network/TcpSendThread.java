@@ -8,6 +8,7 @@ import android.os.Message;
 
 import com.example.cast.client.IConnectListener;
 import com.example.cast.client.bean.DeviceInfo;
+import com.example.cast.client.broad.UIBroadReceiver;
 import com.example.cast.client.utils.Clog;
 import com.example.cast.client.utils.QueueManager;
 import com.example.cast.client.utils.Utils;
@@ -33,7 +34,7 @@ public class TcpSendThread extends Thread {
     private InetAddress inetAddress;
     private boolean isRunning = false;
     private DeviceInfo info;
-    private IConnectListener mListener;
+    private Context mContext;
 
     public TcpSendThread() {
         this(null, new DeviceInfo(HOST, PORT));
@@ -49,6 +50,7 @@ public class TcpSendThread extends Thread {
 
     public TcpSendThread(Context context, DeviceInfo info) {
         this.info = info;
+        this.mContext = context;
     }
 
     @Override
@@ -64,7 +66,7 @@ public class TcpSendThread extends Thread {
             Clog.e(TAG, e.toString());
             isRunning = false;
         }
-        mListener.onStatus(isRunning);
+        updateUI();
 
         while (isRunning && mOutputStream != null) {
             try {
@@ -80,6 +82,13 @@ public class TcpSendThread extends Thread {
             }
         }
 
+    }
+
+    private void updateUI() {
+        Intent intent = new Intent();
+        intent.putExtra("isUpdate",isRunning);
+        intent.setAction(UIBroadReceiver.UI_UPDATA);
+        mContext.sendBroadcast(intent);
     }
 
     public boolean isConnect() {
@@ -111,7 +120,4 @@ public class TcpSendThread extends Thread {
         }
     }
 
-    public void setConnectListener(IConnectListener listener) {
-        this.mListener = listener;
-    }
 }

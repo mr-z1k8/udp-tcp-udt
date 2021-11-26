@@ -5,6 +5,7 @@ import static com.google.zxing.integration.android.IntentIntegrator.REQUEST_CODE
 import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.media.projection.MediaProjectionManager;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 import androidx.core.app.ActivityCompat;
 
 import com.example.cast.client.bean.DeviceInfo;
+import com.example.cast.client.broad.UIBroadReceiver;
 import com.example.cast.client.network.TcpSendThread;
 import com.example.cast.client.network.UdpSendThread;
 import com.example.cast.client.network.UdtSendThread;
@@ -45,12 +47,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private UdpSendThread udpSendThread;
     private UdtSendThread udtSendThread;
     private MediaProjectionManager mediaProjectionManager;
+    private UIBroadReceiver receiver;
 
     private IConnectListener mListener = new IConnectListener() {
         @Override
         public void onStatus(boolean isConnect) {
             if (isConnect) {
-//                tvStatus.setText("已连接");
+                tvStatus.setText("已连接");
             }
         }
     };
@@ -65,8 +68,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
     private void initThread() {
-        tcpSendThread = new TcpSendThread(info);
-        tcpSendThread.setConnectListener(mListener);
+        tcpSendThread = new TcpSendThread(this,info);
         tcpSendThread.start();
 
         udpSendThread = new UdpSendThread(info);
@@ -124,6 +126,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private void initData() {
         checkPermission();
         mediaProjectionManager = (MediaProjectionManager) getSystemService(MEDIA_PROJECTION_SERVICE);
+
+        receiver = new UIBroadReceiver(mListener);
+        IntentFilter intentFilter = receiver.getFilter();
+        registerReceiver(receiver, intentFilter);
     }
 
     private void checkPermission() {
@@ -181,8 +187,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
             Toast.makeText(this, "解析端口port错误", Toast.LENGTH_SHORT).show();
             return;
         }
-//        initThread();
-        initThreadToUdt();
+        initThread();
+//        initThreadToUdt();
     }
 
     private void stopRecorder() {
@@ -213,6 +219,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
         if (udtSendThread != null) {
             udtSendThread.close();
             udtSendThread = null;
+        }
+        if (receiver != null) {
+            unregisterReceiver(receiver);
+            receiver = null;
         }
         super.onDestroy();
     }
